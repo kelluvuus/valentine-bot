@@ -1,5 +1,11 @@
 import logging
 from aiogram import Bot, Dispatcher, types
+from aiogram.enums import ParseMode
+from aiogram.types import Message
+from aiogram.filters import Command
+from aiogram.utils.markdown import bold
+from aiogram import F
+import asyncio
 from aiogram.utils import executor
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
@@ -70,4 +76,8 @@ async def match_user(message: types.Message):
     await message.answer("Пока нет подходящей пары. Я сообщу, как только кто-то появится! ⏳")
 
 if __name__ == '__main__':
-    executor.start_polling(dp, skip_updates=True)
+    async def main():
+    await dp.start_polling(bot)
+
+if __name__ == "__main__":
+    asyncio.run(main())
